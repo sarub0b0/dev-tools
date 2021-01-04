@@ -3,8 +3,8 @@ CMD := bash
 
 all: run
 
-cntr: build/Dockerfile
-	docker build . -t $@ -f build/Dockerfile
+cntr: cntr/Dockerfile
+	docker build . -t $@ -f cntr/Dockerfile
 
 .PHONY: run
 run: cntr

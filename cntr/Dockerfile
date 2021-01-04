@@ -11,10 +11,12 @@ RUN cargo install cntr
 FROM ubuntu:focal
 WORKDIR /var/lib/cntr
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # build-essential
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y build-essential
+    apt install -y build-essential gdb
 
 COPY --from=cntr /usr/local/cargo/bin/cntr /usr/bin/cntr
 COPY --from=cntr /usr/bin/docker-pid /usr/bin/docker-pid
